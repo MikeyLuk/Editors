@@ -1,24 +1,22 @@
 package com.andymitchell.divedb.data;
 
-import com.andymitchell.divedb.logic.DiveStatistic;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 
 import java.util.List;
 
-import com.andymitchell.divedb.logic.StatisticUtils;
+import com.andymitchell.divedb.logic.dives.Dive;
 
-import static com.andymitchell.divedb.logic.StatisticUtils.*;
+import static com.andymitchell.divedb.logic.statistics.StatisticUtils.*;
 
 public class StatisticMapper {
-    public static DiveStatistic mapToDiveStatistic (int totalNumberOfDives,
-                                                    List<Integer> timeList,
-                                                    List<Double> depthList) {
+    public static DiveStatistic mapToDiveStatistic (List<Dive> timeDepthList) {
         DiveStatistic diveStatistic = new DiveStatistic();
 
-        diveStatistic.setTotalTimeUnderwaterInMinutes(getTotalTimeFromTimeList(timeList));
-        diveStatistic.setTotalAmountOfDives(totalNumberOfDives);
-        diveStatistic.setAverageDiveDepthInMeters(roundToTwoDP(getAverageDepthFromDepthList(depthList)));
-        diveStatistic.setDeepestDiveDepthInMeters(roundToTwoDP(getDeepestDepthFromDepthList(depthList)));
-        diveStatistic.setShallowestDiveDepthInMeters(roundToTwoDP(getShallowestDepthFromDepthList(depthList)));
+        diveStatistic.setTotalTimeUnderwaterInMinutes(getTotalTimeFromTimeDepthList(timeDepthList));
+        diveStatistic.setTotalAmountOfDives(timeDepthList.size());
+        diveStatistic.setAverageDiveDepthInMeters(roundToTwoDP(getAverageDepthFromTimeDepthList(timeDepthList)));
+        diveStatistic.setDeepestDiveDepthInMeters(roundToTwoDP(getDeepestDepthFromTimeDepthList(timeDepthList)));
+        diveStatistic.setShallowestDiveDepthInMeters(roundToTwoDP(getShallowestDepthFromTimeDepthList(timeDepthList)));
 
         return diveStatistic;
     }

@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.logic;
+package com.andymitchell.divedb.logic.statistics;
 
 public class DiveStatistic {
     private Integer totalAmountOfDives;

@@ -1,7 +1,6 @@
 package com.andymitchell.divedb.logic.dives;
 
-import com.andymitchell.divedb.logic.DiveStatistic;
-import com.andymitchell.divedb.logic.dives.Dive;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 
 import java.time.LocalDate;
 import java.util.List;

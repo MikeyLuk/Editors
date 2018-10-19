@@ -1,6 +1,6 @@
 package com.andymitchell.divedb.data.dives;
 
-import com.andymitchell.divedb.logic.DiveStatistic;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DiveRepository;
 

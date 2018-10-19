@@ -1,7 +1,7 @@
 package com.andymitchell.divedb.presentation;
 
-import com.andymitchell.divedb.logic.DiveStatistic;
-import com.andymitchell.divedb.logic.StatisticsService;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
+import com.andymitchell.divedb.logic.statistics.StatisticsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

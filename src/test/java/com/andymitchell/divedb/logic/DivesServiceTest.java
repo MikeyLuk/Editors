@@ -3,6 +3,7 @@ package com.andymitchell.divedb.logic;
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DiveRepository;
 import com.andymitchell.divedb.logic.dives.DivesService;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -37,6 +38,8 @@ public class DivesServiceTest {
 
     public static final double VALID_DEPTH = 14.67;
     public static final double SECOND_VALID_DEPTH = 8.46;
+
+    public static final int VALID_NO_OF_DIVES = 14;
 
     @Before
     public void setUp() throws Exception {
@@ -175,25 +178,15 @@ public class DivesServiceTest {
         assertThat(outputList).contains(dive1FromRepo,dive2FromRepo);
     }
 
-//    @Test
-//    public void whenGettingListOfTimeUnderwaterInMinutes_shouldReturnListOfTimeUnderwaterInMinutes () {
-//        when(diveRepositoryMock.getListOfTimeUnderwaterInMinutes())
-//                .thenReturn(Arrays.asList(VALID_DURATION, SECOND_VALID_DURATION));
-//
-//        List<Integer> timeList = divesService.getListOfTimeUnderwaterInMinutes();
-//
-//        verify(diveRepositoryMock).getListOfTimeUnderwaterInMinutes();
-//        assertThat(timeList).contains(VALID_DURATION,SECOND_VALID_DURATION);
-//    }
-//
-//    @Test
-//    public void whenGettingListOfDepthsInMeters_shouldReturnListOfDepthsInMeter () {
-//        when(diveRepositoryMock.getListOfAllDepthsInMeters())
-//                .thenReturn(Arrays.asList(VALID_DEPTH, SECOND_VALID_DEPTH));
-//
-//        List<Double> depthList = divesService.getListOfAllDepthsInMeters();
-//
-//        verify(diveRepositoryMock).getListOfAllDepthsInMeters();
-//        assertThat(depthList).contains(VALID_DEPTH, SECOND_VALID_DEPTH);
-//    }
+    @Test
+    public void whenGettingDiveStatistic_shouldReturnStatistic() {
+        DiveStatistic diveStatisticFromRepo = new DiveStatistic();
+        diveStatisticFromRepo.setTotalAmountOfDives(VALID_NO_OF_DIVES);
+        when(diveRepositoryMock.getDiveStatistic()).thenReturn(diveStatisticFromRepo);
+
+        DiveStatistic diveStatistic = divesService.getDiveStatistic();
+
+        verify(diveRepositoryMock).getDiveStatistic();
+        assertThat(diveStatistic).isEqualTo(diveStatisticFromRepo);
+    }
 }

@@ -1,11 +1,10 @@
-package com.andymitchell.divedb.logic;
+package com.andymitchell.divedb.logic.statistics;
 
 import com.andymitchell.divedb.logic.dives.DivesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class StatisticsService {

@@ -1,6 +1,6 @@
 package com.andymitchell.divedb.logic.dives;
 
-import com.andymitchell.divedb.logic.DiveStatistic;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

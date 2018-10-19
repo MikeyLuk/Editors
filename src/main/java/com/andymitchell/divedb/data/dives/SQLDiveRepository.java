@@ -1,7 +1,7 @@
 package com.andymitchell.divedb.data.dives;
 
 import com.andymitchell.divedb.data.StatisticMapper;
-import com.andymitchell.divedb.logic.DiveStatistic;
+import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DiveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,24 +129,7 @@ public class SQLDiveRepository implements DiveRepository {
 
     @Override
     public DiveStatistic getDiveStatistic() {
-        return StatisticMapper.mapToDiveStatistic(getTotalAmountOfDives(),
-                getListOfTimeUnderwaterInMinutes(),
-                getListOfAllDepthsInMeters());
-    }
-
-    public int getTotalAmountOfDives() {
-        String query = "SELECT count(*) FROM " + TABLE_NAME;
-        return jdbcTemplate.queryForObject(query,new EmptySqlParameterSource(),Integer.class);
-    }
-
-    public List<Integer> getListOfTimeUnderwaterInMinutes() {
-        String query = "SELECT d_duration_in_minutes FROM " + TABLE_NAME;
-        return jdbcTemplate.query(query, (rs, rowNum) -> rs.getInt("d_duration_in_minutes"));
-    }
-
-    public List<Double> getListOfAllDepthsInMeters() {
-        String query = "SELECT d_max_depth_in_meters FROM " + TABLE_NAME;
-        return jdbcTemplate.query(query, (rs, rowNum) -> rs.getDouble("d_max_depth_in_meters"));
+        return StatisticMapper.mapToDiveStatistic(getAllDives());
     }
 
 }
