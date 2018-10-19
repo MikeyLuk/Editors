@@ -1,37 +1,68 @@
 package com.andymitchell.divedb.presentation;
 
-import com.andymitchell.divedb.logic.Dive;
-import com.andymitchell.divedb.logic.DivesService;
+import com.andymitchell.divedb.logic.dives.Dive;
+import com.andymitchell.divedb.logic.dives.DivesService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("/logbook/dives")
 public class DivesController {
     @Resource
     private DivesService divesService;
 
-    @PostMapping ("logbook/dives/save")
+    @PostMapping
     public Dive save(@RequestBody Dive dive) {
         return divesService.save(dive);
     }
 
-    @GetMapping("logbook/dives/getAllDives")
-    public List<Dive> dives () {
+    @GetMapping
+    public List<Dive> dives() {
         return divesService.getAllDives();
     }
 
-    @GetMapping("logbook/dives/getDiveFromDateAndLocation")
-    public Dive getDiveFromDateAndLocation (@RequestParam(value ="date", defaultValue = "")String date,
-                                            @RequestParam(value = "location", defaultValue = "")String location) {
-        return divesService.getDiveFromDateAndLocation(LocalDate.parse(date),location);
+    @GetMapping("/{id}")
+    public Dive getDiveById(@PathVariable("id") int id) {
+        return divesService.getDiveFromId(id);
     }
-    @DeleteMapping("logbook/dives/deleteDiveFromDateAndLocation")
-    public Dive deleteDiveFromDateAndLocation (@RequestParam(value ="date", defaultValue = "")String date,
-                                            @RequestParam(value = "location", defaultValue = "")String location) {
-        return divesService.deleteDiveFromDateAndLocation(LocalDate.parse(date),location);
+
+    @GetMapping("/date/{date}")
+    public List<Dive> getDivesFromDate(@PathVariable("date") String date) {
+        return divesService.getDivesFromDate(LocalDate.parse(date));
+    }
+
+    @GetMapping("location/{location}")
+    public List<Dive> getDivesFromLocation(@PathVariable("location") String location) {
+        return divesService.getDivesFromLocation(location);
+    }
+
+    @GetMapping("/date/{date}/location/{location}")
+    public List<Dive> getDivesFromDateAndLocation(@PathVariable("date") String date,
+                                                  @PathVariable("location") String location) {
+        return divesService.getDivesFromDateAndLocation(LocalDate.parse(date), location);
+    }
+
+    @DeleteMapping
+    public List<Dive> deleteAllDives() {
+        return divesService.deleteAllDives();
+    }
+
+    @DeleteMapping("/{id}")
+    public Dive deleteDiveById(@PathVariable("id") int id) {
+        return divesService.deleteDiveFromId(id);
+    }
+
+    @PutMapping
+    public List<Dive> updateMultipleDives(@RequestBody List<Dive> divesToUpdate) {
+        return divesService.updateMultipleDives(divesToUpdate);
+    }
+
+    @PutMapping("/{id}")
+    public Dive updateDiveById(@PathVariable int id,
+                               @RequestBody Dive dive) {
+        return divesService.updateDiveFromId(id, dive);
     }
 }

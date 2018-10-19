@@ -1,15 +1,24 @@
-package com.andymitchell.divedb.logic;
+package com.andymitchell.divedb.logic.dives;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Dive {
+    private int id;
     private LocalDate date;
     private String location;
     private int durationInMinutes;
-    private int maxDepthInMeters;
+    private double maxDepthInMeters;
     private String waterConditions;
     private boolean performedSafetyStop;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDate getDate() {
         return date;
@@ -35,11 +44,11 @@ public class Dive {
         this.durationInMinutes = durationInMinutes;
     }
 
-    public int getMaxDepthInMeters() {
+    public double getMaxDepthInMeters() {
         return maxDepthInMeters;
     }
 
-    public void setMaxDepthInMeters(int maxDepthInMeters) {
+    public void setMaxDepthInMeters(double maxDepthInMeters) {
         this.maxDepthInMeters = maxDepthInMeters;
     }
 
@@ -59,21 +68,4 @@ public class Dive {
         this.performedSafetyStop = performedSafetyStop;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Dive dive = (Dive) o;
-        return durationInMinutes == dive.durationInMinutes &&
-                maxDepthInMeters == dive.maxDepthInMeters &&
-                performedSafetyStop == dive.performedSafetyStop &&
-                Objects.equals(date, dive.date) &&
-                Objects.equals(location, dive.location) &&
-                Objects.equals(waterConditions, dive.waterConditions);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(date, location, durationInMinutes, maxDepthInMeters, waterConditions, performedSafetyStop);
-    }
 }
