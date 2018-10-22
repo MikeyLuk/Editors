@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container">
+<h1>Here is a list of all your dives!</h1>
+<table class="table table-striped col">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Duration of dive(mins)</th>
+        <th>Max depth(m)</th>
+        <th>Water conditions</th>
+        <th>Performed safety stop</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dive : ${allDives}">
+        <td th:text="${dive.id}"></td>
+        <td th:text="${dive.date}"></td>
+        <td th:text="${dive.location}"></td>
+        <td th:text="${dive.durationInMinutes}"></td>
+        <td th:text="${dive.maxDepthInMeters}"></td>
+        <td th:text="${dive.waterConditions}"></td>
+        <td th:text="${dive.performedSafetyStop}"> </td>
+        <td><a th:href="@{/update_id(id=${dive.id})}" class="btn btn-primary">Update</a></td>
+        <td><a th:href="@{/delete_id(id=${dive.id})}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

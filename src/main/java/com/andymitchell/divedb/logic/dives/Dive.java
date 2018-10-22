@@ -1,10 +1,13 @@
 package com.andymitchell.divedb.logic.dives;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Dive {
     private int id;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
     private String location;
     private int durationInMinutes;
@@ -67,5 +70,4 @@ public class Dive {
     public void setPerformedSafetyStop(boolean performedSafetyStop) {
         this.performedSafetyStop = performedSafetyStop;
     }
-
 }

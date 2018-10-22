@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.presentation;
+package com.andymitchell.divedb.presentation.api_controllers;
 
 import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import com.andymitchell.divedb.logic.statistics.StatisticsService;
@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/statistics")
-public class StatisticsController {
+public class StatisticsAPIController {
 
     @Resource
     private StatisticsService statisticsService;

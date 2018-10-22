@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container">
+    <h1>You have selected the following dive to be updated:</h1>
+    <table class="table table-striped col">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Duration of dive(mins)</th>
+            <th>Max depth(m)</th>
+            <th>Water conditions</th>
+            <th>Performed safety stop</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${diveToUpdate.id}"></td>
+            <td th:text="${diveToUpdate.date}"></td>
+            <td th:text="${diveToUpdate.location}"></td>
+            <td th:text="${diveToUpdate.durationInMinutes}"></td>
+            <td th:text="${diveToUpdate.maxDepthInMeters}"></td>
+            <td th:text="${diveToUpdate.waterConditions}"></td>
+            <td th:text="${diveToUpdate.performedSafetyStop}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h1>Please enter the updated information</h1>
+    <form action="#" th:action="@{/update_dive}" th:object="${updatedDive}" method="post">
+        <div>
+            <input type="hidden" th:field="*{id}" th:value="${diveToUpdate.id}">
+        </div>
+        <div class="form-group row">
+            <label for="location" class="col-sm-6 col-form-label">Location</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control w-auto" id="location"
+                       th:field="*{location}" th:value="*{diveToUpdate.location}" placeholder="Location">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="date" class="col-sm-6 col-form-label">Date</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control w-auto" id="date"
+                       th:field="*{date}" th:value="*{diveToUpdate.date}" placeholder="Date">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="durationInMinutes" class="col-sm-6 col-form-label">Duration(mins)</label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control w-auto" id="durationInMinutes"
+                       th:field="*{durationInMinutes}" th:value="*{diveToUpdate.durationInMinutes}"
+                       placeholder="Duration(mins)">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="maxDepthInMeters" class="col-sm-6 col-form-label">Max Depth (m)</label>
+            <div class="col-sm-6">
+                <input type="number" step="0.01" class="form-control w-auto" id="maxDepthInMeters"
+                       th:field="*{maxDepthInMeters}" th:value="*{diveToUpdate.maxDepthInMeters}"
+                       placeholder="Max Depth(m)">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="waterConditions" class="col-sm-6 col-form-label">Water Conditions</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control w-auto" id="waterConditions"
+                       th:field="*{waterConditions}" th:value="*{diveToUpdate.waterConditions}"
+                       placeholder="Water Conditions">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">Performed Safety Stop</div>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    <input class="form-check-input w-auto" type="checkbox"
+                           th:field="*{performedSafetyStop}" th:value="*{diveToUpdate.performedSafetyStop}"
+                           id="performedSafetyStop">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -16,15 +16,16 @@ public class StatisticUtils {
         return totalTime;
     }
 
-    public static Double getAverageDepthFromTimeDepthList(List<Dive> timeDepthList) {
+    public static Double getAverageDepthFromTimeDepthList(List<Dive> diveList) {
 
         double totalMetersDived = 0;
 
-        for (Dive dive : timeDepthList) {
+        for (Dive dive : diveList) {
             totalMetersDived += dive.getMaxDepthInMeters();
         }
 
-        return totalMetersDived/(double)timeDepthList.size();
+        diveList.stream().mapToDouble(d -> d.getMaxDepthInMeters()).sum();
+        return totalMetersDived/(double)diveList.size();
     }
 
     public static Double getShallowestDepthFromTimeDepthList(List<Dive> timeDepthList) {

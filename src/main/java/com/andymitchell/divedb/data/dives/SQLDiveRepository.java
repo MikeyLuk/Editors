@@ -89,7 +89,7 @@ public class SQLDiveRepository implements DiveRepository {
 
         String query = "DELETE FROM " + TABLE_NAME + " WHERE d_id = :id";
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
-        jdbcTemplate.query(query, namedParameters, rowMapper);
+        jdbcTemplate.update(query, namedParameters);
 
         return diveToBeDeleted;
     }

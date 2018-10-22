@@ -1,0 +1,30 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.small-img {
+    width: 500px;
+}
+
+.container {
+    /*width: auto;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    padding: 50px;
+}
+
+/*.container p {*/
+    /*display: table-row;*/
+    /*text-align: left;*/
+/*}*/
+
+/*.container label {*/
+    /*display: table-cell;*/
+    /*padding: 0 15px 0 15px;*/
+/*}*/
+
+/*.container input {*/
+    /*display: table-cell;*/
+/*}*/

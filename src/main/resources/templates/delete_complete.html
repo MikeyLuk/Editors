@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="container">
+    <h1>You just deleted the following dive:</h1>
+    <table class="table table-striped col">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Duration of dive(mins)</th>
+            <th>Max depth(m)</th>
+            <th>Water conditions</th>
+            <th>Performed safety stop</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${dive.id}"></td>
+            <td th:text="${dive.date}"></td>
+            <td th:text="${dive.location}"></td>
+            <td th:text="${dive.durationInMinutes}"></td>
+            <td th:text="${dive.maxDepthInMeters}"></td>
+            <td th:text="${dive.waterConditions}"></td>
+            <td th:text="${dive.performedSafetyStop}"> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

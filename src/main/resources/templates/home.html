@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+<p th:text="'Today\'s date is: ' + ${date}"/>
+<img class="center small-img" src="img/diver.jpg" alt="Diver">
+</body>
+</html>
