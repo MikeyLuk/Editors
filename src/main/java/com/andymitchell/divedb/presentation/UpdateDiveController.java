@@ -19,16 +19,17 @@ public class UpdateDiveController {
 
     @RequestMapping(value = "/update_id", method = RequestMethod.GET)
     public String updateDiveForm(@RequestParam(name = "id") String id, Model model) {
-        model.addAttribute("diveToUpdate", divesService.getDiveFromId(Integer.parseInt(id)));
-        Dive dive = new Dive();
-        dive.setId(Integer.parseInt(id));
-        model.addAttribute("updatedDive", dive);
+        Dive diveToUpdate = divesService.getDiveFromId(Integer.parseInt(id));
+        model.addAttribute("diveToUpdate", diveToUpdate);
+        model.addAttribute("diveSearch", new Dive());
+        model.addAttribute("updatedDive", diveToUpdate);
         return "update_form";
     }
 
     @PostMapping("update_dive")
     public String updateDive(@ModelAttribute Dive dive, Model model) {
         Dive updatedDive = divesService.updateDiveFromId(dive.getId(),dive);
+        model.addAttribute("diveSearch", new Dive());
         model.addAttribute("dive", updatedDive);
         return "update_complete";
     }

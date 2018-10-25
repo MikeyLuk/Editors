@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-
 public class DeleteDiveController {
     private DivesService divesService;
 
@@ -21,6 +20,7 @@ public class DeleteDiveController {
     public String deleteDive(@RequestParam(name = "id") String id, Model model) {
         Dive deletedDive = divesService.deleteDiveFromId(Integer.parseInt(id));
         model.addAttribute("dive", deletedDive);
+        model.addAttribute("diveSearch", new Dive());
         return "delete_complete";
     }
 }

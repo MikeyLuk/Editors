@@ -53,8 +53,9 @@ public class SQLDiveRepository implements DiveRepository {
 
     @Override
     public List<Dive> getDivesFromLocation(String location) {
-        String query = "SELECT * from " + TABLE_NAME + " where d_location = :location";
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("location", location);
+        String query = "SELECT * from " + TABLE_NAME + " where d_location LIKE :location";
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("location",
+                "%" + location + "%");
         return jdbcTemplate.query(query, namedParameters, rowMapper);
     }
 

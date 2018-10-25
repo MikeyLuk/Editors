@@ -23,6 +23,7 @@ public class CreateDiveController {
     @GetMapping
     public String dives(Model model) {
         model.addAttribute("dive", new Dive());
+        model.addAttribute("diveSearch", new Dive());
         return "create_dive";
     }
 
@@ -30,6 +31,7 @@ public class CreateDiveController {
     public String addDive(@ModelAttribute Dive dive, Model model) {
         Dive savedDive = divesService.save(dive);
         model.addAttribute("dive", savedDive);
+        model.addAttribute("diveSearch", new Dive());
         return "create_complete";
     }
 }

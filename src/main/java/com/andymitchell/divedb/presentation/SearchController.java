@@ -1,31 +1,29 @@
 package com.andymitchell.divedb.presentation;
 
-
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DivesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.time.LocalDate;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/dives")
-public class DivesController {
+
+public class SearchController {
 
     private DivesService divesService;
 
     @Autowired
-    public DivesController(DivesService divesService) {
+    public SearchController(DivesService divesService) {
         this.divesService = divesService;
     }
 
-    @GetMapping
-    public String dives(Model model) {
-        model.addAttribute("allDives", divesService.getAllDives());
+    @PostMapping("/search")
+    public String search(@ModelAttribute Dive dive, Model model) {
+        model.addAttribute("allDives", divesService.getDivesFromLocation(dive.getLocation()));
         model.addAttribute("diveSearch", new Dive());
         return "dives";
     }
 }
+
+
