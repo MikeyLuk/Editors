@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.presentation;
+package com.andymitchell.divedb.presentation.web;
 
 import com.andymitchell.divedb.logic.dives.Dive;
 import org.springframework.stereotype.Controller;
@@ -22,10 +22,5 @@ public class HomeController {
         model.addAttribute("diveSearch", new Dive());
         model.addAttribute("date", LocalDate.now());
         return "home";
-    }
-    @GetMapping("login")
-    public String login(Model model) {
-        model.addAttribute("diveSearch", new Dive());
-        return "login";
     }
 }

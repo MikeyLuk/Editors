@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.presentation.api_controllers;
+package com.andymitchell.divedb.presentation.api;
 
 import com.andymitchell.divedb.logic.CalculatorService;
 import com.andymitchell.divedb.logic.weather.Weather;
