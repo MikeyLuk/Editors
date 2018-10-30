@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/logbook/dives")
+@RequestMapping("/api/logbook/dives")
 public class DivesAPIController {
     @Resource
     private DivesService divesService;

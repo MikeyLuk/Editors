@@ -9,6 +9,7 @@ import java.util.Map;
 
 @Service
 public class CalculatorService {
+
     public String planDive(double firstDiveDepthMeters, int firstDiveLengthMinutes,
                            double secondDiveDepthMeters, int secondDiveLengthMinutes) {
 
