@@ -1,7 +1,4 @@
-package com.andymitchell.divedb.logic;
-
-import com.andymitchell.divedb.logic.User;
-import org.springframework.dao.EmptyResultDataAccessException;
+package com.andymitchell.divedb.logic.user;
 
 public interface UserRepository {
 

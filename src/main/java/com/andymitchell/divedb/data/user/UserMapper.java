@@ -1,6 +1,6 @@
-package com.andymitchell.divedb.data;
+package com.andymitchell.divedb.data.user;
 
-import com.andymitchell.divedb.logic.User;
+import com.andymitchell.divedb.logic.user.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

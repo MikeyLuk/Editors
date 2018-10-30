@@ -1,7 +1,7 @@
 package com.andymitchell.divedb.presentation.web;
 
-import com.andymitchell.divedb.logic.User;
-import com.andymitchell.divedb.logic.UserService;
+import com.andymitchell.divedb.logic.user.User;
+import com.andymitchell.divedb.logic.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

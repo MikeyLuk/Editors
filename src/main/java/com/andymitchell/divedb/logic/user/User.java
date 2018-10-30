@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.logic;
+package com.andymitchell.divedb.logic.user;
 
 import org.hibernate.validator.constraints.Length;
 

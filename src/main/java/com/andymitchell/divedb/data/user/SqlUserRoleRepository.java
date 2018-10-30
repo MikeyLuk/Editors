@@ -1,9 +1,8 @@
-package com.andymitchell.divedb.data;
+package com.andymitchell.divedb.data.user;
 
-import com.andymitchell.divedb.logic.UserRoleRepository;
+import com.andymitchell.divedb.logic.user.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -26,7 +25,7 @@ public class SqlUserRoleRepository implements UserRoleRepository {
 
     @Override
     public void addUserRoleLink(int userId, int roleId) {
-        String query = "INSERT INTOo " + TABLE_NAME + " VALUES(:userId, :roleId)";
+        String query = "INSERT INTO " + TABLE_NAME + " VALUES(:userId, :roleId)";
         KeyHolder key = new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("userId", userId)
                 .addValue("roleId",roleId);

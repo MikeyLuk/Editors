@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.presentation.web;
+package com.andymitchell.divedb.presentation.web.dives;
 
 
 import com.andymitchell.divedb.logic.dives.Dive;

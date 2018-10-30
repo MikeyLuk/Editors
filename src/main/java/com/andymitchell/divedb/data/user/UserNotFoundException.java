@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.data;
+package com.andymitchell.divedb.data.user;
 
 public class UserNotFoundException extends  RuntimeException {
     public UserNotFoundException() {

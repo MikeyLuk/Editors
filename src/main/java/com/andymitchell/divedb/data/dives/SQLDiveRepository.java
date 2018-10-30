@@ -4,6 +4,9 @@ import com.andymitchell.divedb.data.StatisticMapper;
 import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DiveRepository;
+import com.andymitchell.divedb.presentation.LoggingController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.*;
@@ -17,6 +20,8 @@ import java.util.List;
 @Primary
 @Repository
 public class SQLDiveRepository implements DiveRepository {
+
+    Logger logger = LoggerFactory.getLogger(SQLDiveRepository.class);
 
     public static final String TABLE_NAME = "diveapp.dives";
     private final DiveRowMapper rowMapper = new DiveRowMapper();
@@ -118,6 +123,7 @@ public class SQLDiveRepository implements DiveRepository {
     @Override
     public Dive updateDiveFromId(int id, Dive dive) {
         dive.setId(id);
+        Dive oldDive = getDiveFromId(id);
         String query = "UPDATE " + TABLE_NAME + " SET d_date = :date, d_location = :location, " +
                 "d_duration_in_minutes = :durationInMinutes, d_max_depth_in_meters = :maxDepthInMeters, " +
                 "d_water_conditions = :waterConditions, d_performed_safety_stop = :performedSafetyStop" +
@@ -125,6 +131,7 @@ public class SQLDiveRepository implements DiveRepository {
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(dive);
         KeyHolder key = new GeneratedKeyHolder();
         jdbcTemplate.update(query, namedParameters, key);
+        logger.info("Updated dive " + id + " from" + oldDive +" to " + dive);
         return getDiveFromId(id);
     }
 

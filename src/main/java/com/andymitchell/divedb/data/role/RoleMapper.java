@@ -1,9 +1,8 @@
-package com.andymitchell.divedb.data;
+package com.andymitchell.divedb.data.role;
 
-import com.andymitchell.divedb.logic.Role;
+import com.andymitchell.divedb.logic.role.Role;
 import org.springframework.jdbc.core.RowMapper;
 
-import javax.swing.tree.TreePath;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

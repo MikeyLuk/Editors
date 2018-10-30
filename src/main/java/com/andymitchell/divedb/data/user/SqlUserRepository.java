@@ -1,7 +1,7 @@
-package com.andymitchell.divedb.data;
+package com.andymitchell.divedb.data.user;
 
-import com.andymitchell.divedb.logic.User;
-import com.andymitchell.divedb.logic.UserRepository;
+import com.andymitchell.divedb.logic.user.User;
+import com.andymitchell.divedb.logic.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -47,4 +47,5 @@ public class SqlUserRepository implements UserRepository {
         user.setId(key.getKey().intValue());
         return user;
     }
+
 }

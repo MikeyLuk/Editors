@@ -33,6 +33,7 @@
     </table>
     <h2>Please enter the updated information</h2>
     <form action="#" th:action="@{/update_dive}" th:object="${updatedDive}" method="post">
+        <input type="hidden" id="id" th:field="*{id}">
         <div class="form-group row">
             <label for="location" class="col-sm-6 col-form-label">Location</label>
             <div class="col-sm-6">

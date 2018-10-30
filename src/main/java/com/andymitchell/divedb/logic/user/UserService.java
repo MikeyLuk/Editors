@@ -1,13 +1,11 @@
-package com.andymitchell.divedb.logic;
+package com.andymitchell.divedb.logic.user;
 
+import com.andymitchell.divedb.logic.role.Role;
+import com.andymitchell.divedb.logic.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 @Service
 public class UserService {
@@ -26,6 +24,16 @@ public class UserService {
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public boolean validateUser (User user) {
+        User userByEmail = findUserByEmail(user.getEmail());
+
+        if (userByEmail != null) {
+            return bCryptPasswordEncoder.matches(user.getPassword(), userByEmail.getPassword());
+        } else {
+            return false;
+        }
     }
 
     @Transactional

@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.logic;
+package com.andymitchell.divedb.logic.role;
 
 public class Role {
     private int id;

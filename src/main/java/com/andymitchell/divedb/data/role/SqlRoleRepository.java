@@ -1,7 +1,7 @@
-package com.andymitchell.divedb.data;
+package com.andymitchell.divedb.data.role;
 
-import com.andymitchell.divedb.logic.Role;
-import com.andymitchell.divedb.logic.RoleRepository;
+import com.andymitchell.divedb.logic.role.Role;
+import com.andymitchell.divedb.logic.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
