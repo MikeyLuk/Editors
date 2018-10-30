@@ -39,6 +39,10 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-security")
 	compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4'
 
+	compile 'io.jsonwebtoken:jjwt-api:0.10.5'
+	runtime 'io.jsonwebtoken:jjwt-impl:0.10.5',
+			'io.jsonwebtoken:jjwt-jackson:0.10.5'
+	
 
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.0'
 	testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'

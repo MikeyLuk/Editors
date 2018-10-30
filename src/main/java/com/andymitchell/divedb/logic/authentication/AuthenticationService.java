@@ -14,8 +14,8 @@ public class AuthenticationService {
         this.authenticationRepository = authenticationRepository;
     }
 
-    public Token createToken() {
-        return authenticationRepository.createToken();
+    public Token createToken(int userId) {
+        return authenticationRepository.createToken(userId);
     }
 
 }

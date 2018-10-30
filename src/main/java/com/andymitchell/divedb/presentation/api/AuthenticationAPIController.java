@@ -25,7 +25,7 @@ public class AuthenticationAPIController {
     @PostMapping("/authenticate")
     public Token createToken(@RequestBody User user) {
         if (userService.validateUser(user)) {
-            return authenticationService.createToken();
+            return authenticationService.createToken(user.getId());
         }
         return null;
     }

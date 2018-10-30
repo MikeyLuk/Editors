@@ -12,6 +12,11 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
+
 import java.util.UUID;
 
 @Repository
@@ -27,15 +32,19 @@ public class SQLAuthenticationRepository implements AuthenticationRepository {
     }
 
     @Override
-    public Token createToken() {
+    public Token createToken(int userId) {
         Token token = new Token();
+        Key tokenKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-        String tokenName = UUID.randomUUID().toString();
+        String tokenName = Jwts.builder().setSubject(Integer.toString(userId)).signWith(tokenKey).compact();
+
+        //String tokenName = UUID.randomUUID().toString();
         String query = "INSERT INTO " + TABLE_NAME + " VALUES(null, :token)";
         KeyHolder key = new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new MapSqlParameterSource()
                 .addValue("token", tokenName);
         jdbcTemplate.update(query, namedParameters, key);
+
         if (key != null) {
             token.setId(key.getKey().intValue());
             token.setName(tokenName);

@@ -4,5 +4,5 @@ import com.andymitchell.divedb.logic.user.User;
 
 public interface AuthenticationRepository {
 
-    Token createToken();
+    Token createToken(int userId);
 }
