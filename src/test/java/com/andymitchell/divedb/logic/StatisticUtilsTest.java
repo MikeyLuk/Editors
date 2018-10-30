@@ -16,7 +16,7 @@ public class StatisticUtilsTest {
 
     private Dive dive1;
     private Dive dive2;
-    private List<Dive> VALID_TIME_DEPTH_LIST = Arrays.asList(dive1,dive2);
+    private List<Dive> VALID_TIME_DEPTH_LIST;
 
     private static final int VALID_DURATION = 10;
     private static final int SECOND_VALID_DURATION = 12;
@@ -35,6 +35,8 @@ public class StatisticUtilsTest {
         dive2 = new Dive();
         dive2.setDurationInMinutes(SECOND_VALID_DURATION);
         dive2.setMaxDepthInMeters(SECOND_VALID_DEPTH);
+
+        VALID_TIME_DEPTH_LIST = Arrays.asList(dive1,dive2);
     }
 
     @Test
