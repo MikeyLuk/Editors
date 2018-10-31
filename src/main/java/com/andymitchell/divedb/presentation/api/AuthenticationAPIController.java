@@ -21,11 +21,11 @@ public class AuthenticationAPIController {
     @Resource
     private UserService userService;
 
-
     @PostMapping("/authenticate")
     public Token createToken(@RequestBody User user) {
-        if (userService.validateUser(user)) {
-            return authenticationService.createToken(user.getId());
+        User userFromDb = userService.validateUser(user);
+        if (userFromDb != null) {
+            return authenticationService.createToken(userFromDb.getId());
         }
         return null;
     }

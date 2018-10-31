@@ -26,13 +26,14 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public boolean validateUser (User user) {
+    public User validateUser (User user) {
         User userByEmail = findUserByEmail(user.getEmail());
 
-        if (userByEmail != null) {
-            return bCryptPasswordEncoder.matches(user.getPassword(), userByEmail.getPassword());
+        if (userByEmail != null &&
+                bCryptPasswordEncoder.matches(user.getPassword(), userByEmail.getPassword())) {
+            return userByEmail;
         } else {
-            return false;
+            return null;
         }
     }
 

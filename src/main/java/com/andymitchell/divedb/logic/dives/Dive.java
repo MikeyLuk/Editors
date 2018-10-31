@@ -3,7 +3,6 @@ package com.andymitchell.divedb.logic.dives;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Dive {
     private int id;
