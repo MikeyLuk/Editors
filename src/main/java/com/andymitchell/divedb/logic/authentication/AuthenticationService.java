@@ -1,6 +1,5 @@
 package com.andymitchell.divedb.logic.authentication;
 
-import com.andymitchell.divedb.logic.user.User;
 import com.andymitchell.divedb.presentation.TokenInvalidException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -24,8 +23,6 @@ public class AuthenticationService {
         Key tokenKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
         String tokenValue = Jwts.builder().setSubject(Integer.toString(userId)).signWith(tokenKey).compact();
-
-//        Token token = authenticationRepository.createToken(tokenValue);
 
         if (tokenIsFromUser(userId, tokenKey, tokenValue)) {
             return authenticationRepository.createToken(tokenValue);

@@ -25,7 +25,6 @@ public class CalculatorAPIController {
                              @RequestParam(value = "secondDiveLengthMinutes", defaultValue = "0") int secondDiveLengthMinutes,
                              @RequestParam(value = "token") String token) {
 
-
         authenticationService.validateToken(token);
 
         return calculatorService.planDive(firstDiveDepthMeters, firstDiveLengthMinutes,
