@@ -46,4 +46,8 @@ public class UserService {
         User savedUser = userRepository.save(user);
         userRoleRepository.addUserRoleLink(savedUser.getId(),userRole.getId());
     }
+
+    public void deleteUserById(int id) {
+        userRepository.deleteUserById(id);
+    }
 }

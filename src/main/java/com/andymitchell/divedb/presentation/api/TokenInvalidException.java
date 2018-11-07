@@ -1,4 +1,4 @@
-package com.andymitchell.divedb.presentation;
+package com.andymitchell.divedb.presentation.api;
 
 public class TokenInvalidException extends RuntimeException{
     public TokenInvalidException() {

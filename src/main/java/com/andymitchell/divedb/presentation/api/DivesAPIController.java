@@ -3,6 +3,7 @@ package com.andymitchell.divedb.presentation.api;
 import com.andymitchell.divedb.logic.authentication.AuthenticationService;
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DivesService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

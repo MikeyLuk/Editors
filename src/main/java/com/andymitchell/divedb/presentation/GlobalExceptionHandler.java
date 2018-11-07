@@ -1,5 +1,6 @@
 package com.andymitchell.divedb.presentation;
 
+import com.andymitchell.divedb.presentation.api.TokenInvalidException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,7 @@ public class GlobalExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(TokenInvalidException.class);
 
-    @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Token Invalid Exception occurred")
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED, reason = "Token Invalid Exception occurred")
     @ExceptionHandler(TokenInvalidException.class)
     public void handleIOException() {
         logger.error("Token Invalid Exception handler executed");

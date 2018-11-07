@@ -11,13 +11,8 @@ import java.time.LocalDate;
 @Controller
 @RequestMapping()
 public class HomeController {
-    @GetMapping
-    public String base(Model model) {
-        model.addAttribute("diveSearch", new Dive());
-        model.addAttribute("date", LocalDate.now());
-        return "home";
-    }
-    @GetMapping("home")
+
+    @GetMapping(value = {"home","/"})
     public String home(Model model) {
         model.addAttribute("diveSearch", new Dive());
         model.addAttribute("date", LocalDate.now());

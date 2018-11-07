@@ -1,6 +1,6 @@
 package com.andymitchell.divedb.logic.authentication;
 
-import com.andymitchell.divedb.presentation.TokenInvalidException;
+import com.andymitchell.divedb.presentation.api.TokenInvalidException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

@@ -48,4 +48,11 @@ public class SqlUserRepository implements UserRepository {
         return user;
     }
 
+    @Override
+    public void deleteUserById(int id) {
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE id = :id";
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
+        jdbcTemplate.update(query, namedParameters);
+    }
+
 }
