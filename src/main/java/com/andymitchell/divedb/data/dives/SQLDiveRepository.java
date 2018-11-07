@@ -4,7 +4,6 @@ import com.andymitchell.divedb.data.StatisticMapper;
 import com.andymitchell.divedb.logic.statistics.DiveStatistic;
 import com.andymitchell.divedb.logic.dives.Dive;
 import com.andymitchell.divedb.logic.dives.DiveRepository;
-import com.andymitchell.divedb.presentation.LoggingController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
