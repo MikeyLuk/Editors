@@ -19,6 +19,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -82,18 +83,17 @@ public class DivesAPIControllerTest {
         Dive diveFromRepo = new Dive();
         diveFromRepo.setLocation(dive.getLocation());
 
-        String result = new ObjectMapper().writeValueAsString(dive);
-
-        System.out.println(result);
-
         when(divesService.save(dive)).thenReturn(diveFromRepo);
+
+
+        String result = new ObjectMapper().writeValueAsString(dive);
+        System.out.println(result);
 
         mvc.perform(post("/api/logbook/dives")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(result)
                 .param("token","token"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].location", is(diveFromRepo.getLocation())));
+                .andExpect(jsonPath("$.location", is(diveFromRepo.getLocation())));
     }
 }

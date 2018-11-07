@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable()
                     .formLogin()
                         .loginPage("/login").failureUrl("/login?error=true")
-                        .defaultSuccessUrl("/home")
+                        .defaultSuccessUrl("/home",true)
                         .usernameParameter("email")
                         .passwordParameter("password")
                 .and().logout()
@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web)  {
         web.ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**","/webjars/**")
                 .antMatchers("/log/**");

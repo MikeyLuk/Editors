@@ -12,15 +12,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class StatisticsServiceTest {
+    private static final int VALID_NO_OF_DIVES = 10;
+
     private DivesService divesService;
     private StatisticsService statisticsService;
 
     private DiveStatistic diveStatistic;
-    private DiveStatistic diveStatisticFromRepo;
 
-    private static final int VALID_NO_OF_DIVES = 10;
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         divesService = Mockito.mock(DivesService.class);
         statisticsService = new StatisticsService(divesService);
 

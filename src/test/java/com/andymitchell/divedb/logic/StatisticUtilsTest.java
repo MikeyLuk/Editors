@@ -26,9 +26,8 @@ public class StatisticUtilsTest {
     private static final double SECOND_VALID_DEPTH = 16.4;
     private static final double SUM_OF_VALID_DEPTHS = VALID_DEPTH + SECOND_VALID_DEPTH;
 
-    private StatisticUtils statisticUtils;
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         dive1 = new Dive();
         dive1.setDurationInMinutes(VALID_DURATION);
         dive1.setMaxDepthInMeters(VALID_DEPTH);

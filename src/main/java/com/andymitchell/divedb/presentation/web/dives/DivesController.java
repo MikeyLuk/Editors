@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 
 @Controller
-@RequestMapping("/dives")
 public class DivesController {
 
     private DivesService divesService;

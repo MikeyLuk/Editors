@@ -9,14 +9,25 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class DivesServiceTest {
+    public static final int VALID_ID = 1;
+    public static final int SECOND_VALID_ID = 2;
+    public static final int THIRD_VALID_ID = 3;
+    public static final int FOURTH_VALID_ID = 4;
+
+    public static final LocalDate VALID_DATE = LocalDate.of(2012, 1, 1);
+    public static final String VALID_LOCATION = "Mexico";
+
+    public static final int VALID_NO_OF_DIVES = 14;
+
     private Dive dive1;
     private Dive dive2;
     private Dive dive1FromRepo;
@@ -25,24 +36,9 @@ public class DivesServiceTest {
     private DiveRepository diveRepositoryMock;
     private DivesService divesService;
 
-    public static final int VALID_ID = 1;
-    public static final int SECOND_VALID_ID = 2;
-    public static final int THIRD_VALID_ID = 3;
-    public static final int FOURTH_VALID_ID = 4;
-
-    public static final LocalDate VALID_DATE = LocalDate.of(2012,1,1);
-    public static final String VALID_LOCATION = "Mexico";
-
-    public static final int VALID_DURATION = 20;
-    public static final int SECOND_VALID_DURATION = 30;
-
-    public static final double VALID_DEPTH = 14.67;
-    public static final double SECOND_VALID_DEPTH = 8.46;
-
-    public static final int VALID_NO_OF_DIVES = 14;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         dive1 = new Dive();
         dive1.setId(VALID_ID);
 
