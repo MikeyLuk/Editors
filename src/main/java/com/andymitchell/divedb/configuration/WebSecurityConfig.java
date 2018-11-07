@@ -75,7 +75,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/log/**");
     }
 
-
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
@@ -88,5 +87,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(user);
     }
-
 }

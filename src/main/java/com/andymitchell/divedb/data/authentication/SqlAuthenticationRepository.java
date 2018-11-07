@@ -12,14 +12,14 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SQLAuthenticationRepository implements AuthenticationRepository {
+public class SqlAuthenticationRepository implements AuthenticationRepository {
 
     private static final String TABLE_NAME = "tokens";
 
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Autowired
-    public SQLAuthenticationRepository(NamedParameterJdbcTemplate jdbcTemplate) {
+    public SqlAuthenticationRepository(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

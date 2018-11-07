@@ -18,9 +18,9 @@ import java.util.List;
 
 @Primary
 @Repository
-public class SQLDiveRepository implements DiveRepository {
+public class SqlDiveRepository implements DiveRepository {
 
-    Logger logger = LoggerFactory.getLogger(SQLDiveRepository.class);
+    private Logger logger = LoggerFactory.getLogger(SqlDiveRepository.class);
 
     public static final String TABLE_NAME = "diveapp.dives";
     private final DiveRowMapper rowMapper = new DiveRowMapper();
@@ -28,7 +28,7 @@ public class SQLDiveRepository implements DiveRepository {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Autowired
-    public SQLDiveRepository(NamedParameterJdbcTemplate jdbcTemplate) {
+    public SqlDiveRepository(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
