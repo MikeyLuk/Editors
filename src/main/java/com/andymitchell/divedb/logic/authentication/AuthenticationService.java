@@ -51,13 +51,11 @@ public class AuthenticationService {
     }
 
     public int getUserIdFromToken(String tokenValue) {
-        String user = Jwts.parser()
+        return Integer.parseInt(Jwts.parser()
                 .setSigningKey(tokenKey)
                 .parseClaimsJws(tokenValue)
                 .getBody()
-                .getSubject().;
-
-        return Integer.parseInt(user);
+                .getSubject());
     }
 
 }
