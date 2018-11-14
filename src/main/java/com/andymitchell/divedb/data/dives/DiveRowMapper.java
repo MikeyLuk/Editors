@@ -18,6 +18,7 @@ public class DiveRowMapper implements RowMapper<Dive> {
         dive.setMaxDepthInMeters(rs.getDouble("d_max_depth_in_meters"));
         dive.setWaterConditions(rs.getString("d_water_conditions"));
         dive.setPerformedSafetyStop(rs.getBoolean("d_performed_safety_stop"));
+        dive.setUserId(rs.getInt("d_user_id"));
         return dive;
     }
 }

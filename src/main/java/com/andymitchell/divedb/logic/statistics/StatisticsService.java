@@ -16,8 +16,8 @@ public class StatisticsService {
         this.divesService = divesService;
     }
 
-    public DiveStatistic getDiveStatistic () {
-        return divesService.getDiveStatistic();
+    public DiveStatistic getDiveStatistic (int userId) {
+        return divesService.getDiveStatistic(userId);
     }
 
 }

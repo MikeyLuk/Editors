@@ -23,13 +23,13 @@ public class DivesAPIController {
     public Dive save(@RequestBody Dive dive,
                      @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return divesService.save(dive);
+        return divesService.save(dive, authenticationService.getUserIdFromToken(token));
     }
 
     @GetMapping
     public List<Dive> dives(@RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return divesService.getAllDives();
+        return divesService.getAllDives(authenticationService.getUserIdFromToken(token));
     }
 
     @GetMapping("/{id}")
@@ -37,7 +37,7 @@ public class DivesAPIController {
                             @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
 
-        return divesService.getDiveFromId(id);
+        return divesService.getDiveFromId(id, authenticationService.getUserIdFromToken(token));
     }
 
     @GetMapping("/date/{date}")
@@ -45,7 +45,7 @@ public class DivesAPIController {
                                        @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
 
-        return divesService.getDivesFromDate(LocalDate.parse(date));
+        return divesService.getDivesFromDate(LocalDate.parse(date), authenticationService.getUserIdFromToken(token));
     }
 
     @GetMapping("location/{location}")
@@ -53,7 +53,7 @@ public class DivesAPIController {
                                            @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
 
-        return divesService.getDivesFromLocation(location);
+        return divesService.getDivesFromLocation(location, authenticationService.getUserIdFromToken(token));
     }
 
     @GetMapping("/date/{date}/location/{location}")
@@ -62,27 +62,27 @@ public class DivesAPIController {
                                                   @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
 
-        return divesService.getDivesFromDateAndLocation(LocalDate.parse(date), location);
+        return divesService.getDivesFromDateAndLocation(LocalDate.parse(date), location, authenticationService.getUserIdFromToken(token));
     }
 
     @DeleteMapping
     public List<Dive> deleteAllDives(@RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return divesService.deleteAllDives();
+        return divesService.deleteAllDives(authenticationService.getUserIdFromToken(token));
     }
 
     @DeleteMapping("/{id}")
     public Dive deleteDiveById(@PathVariable("id") int id,
                                @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return divesService.deleteDiveFromId(id);
+        return divesService.deleteDiveFromId(id, authenticationService.getUserIdFromToken(token));
     }
 
     @PutMapping
     public List<Dive> updateMultipleDives(@RequestBody List<Dive> divesToUpdate,
                                           @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return divesService.updateMultipleDives(divesToUpdate);
+        return divesService.updateMultipleDives(divesToUpdate, authenticationService.getUserIdFromToken(token));
     }
 
     @PutMapping("/{id}")
@@ -90,6 +90,6 @@ public class DivesAPIController {
                                @RequestBody Dive dive,
                                @RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return divesService.updateDiveFromId(id, dive);
+        return divesService.updateDiveFromId(id, dive, authenticationService.getUserIdFromToken(token));
     }
 }
