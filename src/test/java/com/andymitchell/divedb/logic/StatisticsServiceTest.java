@@ -13,6 +13,7 @@ import static org.mockito.Mockito.when;
 
 public class StatisticsServiceTest {
     private static final int VALID_NO_OF_DIVES = 10;
+    private static final int VALID_USER_ID = 1;
 
     private DivesService divesService;
     private StatisticsService statisticsService;
@@ -30,11 +31,11 @@ public class StatisticsServiceTest {
 
     @Test
     public void whenGettingDiveStatistic_shouldReturnDiveStatistic () {
-        when(divesService.getDiveStatistic()).thenReturn(diveStatistic);
+        when(divesService.getDiveStatistic(VALID_USER_ID)).thenReturn(diveStatistic);
 
-        DiveStatistic methodOutput = statisticsService.getDiveStatistic();
+        DiveStatistic methodOutput = statisticsService.getDiveStatistic(VALID_USER_ID);
 
-        verify(divesService).getDiveStatistic();
+        verify(divesService).getDiveStatistic(VALID_USER_ID);
         assertThat(methodOutput).isEqualTo(diveStatistic);
     }
 
