@@ -14,6 +14,7 @@ public class Dive {
     private double maxDepthInMeters;
     private String waterConditions;
     private boolean performedSafetyStop;
+    private Integer userId;
 
     public int getId() {
         return id;
@@ -69,6 +70,14 @@ public class Dive {
 
     public void setPerformedSafetyStop(boolean performedSafetyStop) {
         this.performedSafetyStop = performedSafetyStop;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override

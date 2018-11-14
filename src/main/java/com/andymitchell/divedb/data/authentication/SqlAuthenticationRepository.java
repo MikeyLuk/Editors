@@ -55,5 +55,4 @@ public class SqlAuthenticationRepository implements AuthenticationRepository {
         return true;
     }
 
-
 }

@@ -3,6 +3,9 @@ package com.andymitchell.divedb.logic.user;
 import com.andymitchell.divedb.logic.role.Role;
 import com.andymitchell.divedb.logic.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +29,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User validateUser (User user) {
+    public User validateUser(User user) {
         User userByEmail = findUserByEmail(user.getEmail());
 
         if (userByEmail != null &&
@@ -44,10 +47,12 @@ public class UserService {
         Role userRole = roleRepository.findByRole("ADMIN");
 
         User savedUser = userRepository.save(user);
-        userRoleRepository.addUserRoleLink(savedUser.getId(),userRole.getId());
+        userRoleRepository.addUserRoleLink(savedUser.getId(), userRole.getId());
     }
 
     public void deleteUserById(int id) {
         userRepository.deleteUserById(id);
     }
+
 }
+

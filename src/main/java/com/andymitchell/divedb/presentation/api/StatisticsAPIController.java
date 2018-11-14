@@ -23,7 +23,7 @@ public class StatisticsAPIController {
     @GetMapping
     public DiveStatistic getDiveStatistic(@RequestParam(name = "token") String token) {
         authenticationService.validateToken(token);
-        return statisticsService.getDiveStatistic();
+        return statisticsService.getDiveStatistic(authenticationService.getUserIdFromToken(token));
     }
 
 }
